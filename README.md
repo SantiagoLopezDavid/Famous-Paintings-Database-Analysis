@@ -7,6 +7,10 @@ By responding multiple questions using PostgreSQL queries we seek to indentify k
 ## Data Sources
 The Dataset used for this analysis is composed of multiple `csv` files containing information about famous paintings, museums, and more.
 
+## Project Files
+- `Questions.txt`: Contains 22 questions to be answer realted to the Database.
+- `Answers.sql`: PostgreSQL Script for each query. Some of the questons have multiple answers as there are more than one way to provide an answer. Aswell, there are comments to provide more insoght into the solution process.
+
 ## Tools
 - **Excel**: Data cleaning & preparation.
 - PGAdmin4: Data Analysis using **PostgreSQL** queries.
