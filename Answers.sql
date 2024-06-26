@@ -1,26 +1,26 @@
 /*1.Fetch all the paintings which are not displayed on any museums? */
+
 SELECT * FROM work
 WHERE museum_id IS NULL;
 
 /*2.Are there museums without any paintings?
+
 We perform a left outer join with tables museum and work
 We are looking for museums_id from the museum table that are not included
 in the work table*/
+
 SELECT * FROM museum m
 WHERE NOT EXISTS 
 (SELECT FROM work w
 WHERE w.museum_id = m.museum_id);
-/*Solution from document*/
-SELECT * FROM museum m
-LEFT OUTER JOIN work w
-ON m.museum_id = w.museum_id
-WHERE w.museum_id IS NULL;
 
 /*3.How many paintings have an asking price of more than their regular price?*/
+
 SELECT COUNT(*) as total_count FROM product_size
 WHERE sale_price > regular_price;
 
 /*4.Identify the paintings whose asking price is less than 50% of its regular price*/
+
 SELECT w.name, ps.sale_price, ps.regular_price, w.museum_id
 FROM product_size ps
 INNER JOIN work w
@@ -28,6 +28,7 @@ ON ps.work_id = w.work_id
 WHERE sale_price < (regular_price*0.5);
 
 /*5.Which canva size costs the most?*/
+
 SELECT c.size_ide, ps.sale_price, c.label
 FROM canvas_size c
 FULL OUTER JOIN product_size ps
@@ -35,11 +36,13 @@ ON c.size_ide = ps.size_id
 WHERE ps.sale_price IS NOT NULL
 ORDER BY ps.sale_price DESC
 LIMIT 1;
+
 /*Another solution could be use the RANK() function.
 We can not use aliases in a WHERE clause in this case 
 we cannot do a RANK() and call the alias of the colum on
 the WHERE clause. We have to create a subquery and then 
 we can call the alias.*/
+
 SELECT ps.size_id,label, sale_price,
 RANK() OVER(order by sale_price DESC) as price_rnk
 FROM product_size ps
@@ -54,17 +57,11 @@ JOIN canvas_size cs
 ON ps.size_id = cs.size_ide
 WHERE price_rnk=1;
 
-/*Solution from Document*/
-select cs.label as canva, ps.sale_price, cs.size_ide
-from (select *, rank() over(order by sale_price desc) as rnk 
-from product_size) ps
-join canvas_size cs on cs.size_ide=ps.size_id
-where ps.rnk=1;	
 
 /*6.Delete duplicate records from work, product_size, subject and image_link tables*/
 /*We can use the ctid which is an identifies of each row. Grouping by work_id
 and then deleting the lowest ctid allows*/
-/*Solution from document*/
+
 DELETE FROM work 
 WHERE ctid NOT IN 
 (SELECT MIN(ctid)
@@ -91,18 +88,16 @@ GROUP BY work_id );
 
 /*7)Identify the museums with invalid city information in the given dataset*/
 /*Using Regular Expressions operators*/
+
 SELECT museum_id,name,city FROM museum
 WHERE city ~'^\d.*$';
-/*Solution from document*/
-select museum_id,name,city from museum 
-where city ~ '^[0-9].*$';
-
 
 /*8)Museum_Hours table has 1 invalid entry. Identify it and remove it.*/
 
 /*Check for museum_id
 All 57 museum_id where correct
 */
+
 SELECT mh.museum_id 
 FROM museum_hours AS mh
 LEFT OUTER JOIN museum AS m
@@ -112,42 +107,38 @@ ORDER BY mh.museum_id;
 
 /*Check for day of the week to be correct*/
 /*One of the days is Thusday, we can delete it*/
+
 SELECT DISTINCT day FROM museum_hours
 ORDER BY day;
+
 /*Deleting the day with typo*/
+
 DELETE FROM museum_hours
 WHERE day='Thusday';
 
 /*9)Fetch the top 10 most famous painting subject*/
+
 /*One way to do it, without ranking but couting the number of
 times a subject appears in the table. Ordering by the count and 
 limiting the result table to show only 10*/
+
 SELECT subject, COUNT(subject) AS subject_count 
 FROM subject
 GROUP BY subject
 ORDER BY subject_count DESC
 LIMIT 10;
+
 /*Second way of doing it. Using Rank(), but because we cannot use
 the alias in the WHERE clause, we have to use a subquery in which
 we calculate the rank of each subject based on their appeareance count.
 Then we can call on the Ranking and limit the table to the first 10.*/
+
 SELECT * FROM
 (SELECT subject, COUNT(subject) as subject_count,
 RANK() OVER(ORDER BY COUNT(subject) DESC) as ranking
 FROM subject
 GROUP BY subject) x
 WHERE ranking <= 10;
-
-/*Solution from the document. 
-He uses a join between the work and subject tables to check the count.*/
-select * 
-	from (
-		select s.subject,count(*) as no_of_paintings
-		,rank() over(order by count(*) desc) as ranking
-		from work w
-		join subject s on s.work_id=w.work_id
-		group by s.subject ) x
-	where ranking <= 10;
 
 /*10) Identify the museums which are open on both Sunday and Monday. 
 Display museum name, city.*/
@@ -196,6 +187,7 @@ LIMIT 5;
 /*We have to include the GROUP BY function since we have are counting 
 the number of appearances in the table. We have to give something to divide
 the table by, otherwise it will be one per row.*/
+
 SELECT x.museum_id,m.name as name, x.count_paint
 FROM
 	(SELECT museum_id,COUNT(work_id) count_paint,
@@ -258,6 +250,7 @@ WHERE x.ranking = 1;
 
 /*We can modify the query to get the museum that opens the longest for each
 day of the week by doing a partition by day in the rank function*/
+
 SELECT *
 FROM
 	(SELECT m.name,day,open,close,
@@ -281,6 +274,7 @@ After doing the proper joins we will filter the tables, excluding the null value
 and only selecting the rows which correspond to the rank=1 of the pop_style table.
 Using the last cte, we will select the columns name, style and no_of_paintings to show
 the first rank museum of the table.*/
+
 WITH pop_style as(
 	SELECT style,COUNT(style),
 	RANK()OVER(ORDER BY COUNT(style) DESC) rnk
@@ -324,6 +318,7 @@ We perform a Cross Join between both tables, this will result in a table with
 with a row for each country and city. But we can filter the results to those who
 where rank as 1 in the previous cte's.With this we have the column with the countries ranked 1
 in the country cte and another column with the cities ranked 1 in the city cte.*/
+
 with cte_country as(
 		SELECT country, COUNT(name) count_country,
 		RANK() OVER(ORDER BY COUNT(name) DESC) as rnk
@@ -344,6 +339,7 @@ WHERE country.rnk = 1 and city.rnk=1
 /*19)Identify the artist and the museum where the most expensive and least expensive painting 
 is placed. Display the artist name, sale_price, painting name, museum name, museum city and 
 canvas label*/
+	
 with cte as (
 		select *,
 		rank()over(order by sale_price desc) as rnk_desc,
