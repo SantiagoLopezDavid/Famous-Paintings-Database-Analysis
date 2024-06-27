@@ -1,7 +1,7 @@
 # Data
 This folder contains all the data used at the two stages of the project.
 1. **raw-data** folder: Contains the Dataset as downloaded from [Kaggle](https://www.kaggle.com/datasets/mexwell/famous-paintings/data).
-2. **processed-data** folder: Contains the Dataset after the Data Cleaning & Preparation phase. This is the Dataset used in **PGAdmin4**
+2. **processed-data** folder: Contains the Dataset after the Data Cleaning & Preparation phase. This is the final Dataset used in this project.
 
 ## Data Cleaning & Preparation
 In this phase we perform multiple steps:
