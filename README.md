@@ -9,8 +9,8 @@ The Dataset used for this analysis is composed of multiple `.csv` files containi
 
 ## Project Files
 - `Questions.txt`: Contains 22 questions to be answer realted to the Database.
-- `Answers.sql`: PostgreSQL Script for each query. Some of the questons have multiple answers as there are more than one way to provide an answer. Aswell, there are comments to provide more insoght into the solution process.
-- `Create_tables.sql`: PostgreSQL Script to creat each of the tables to be used during this project.
+- `Answers.sql`: **PostgreSQL** Script for each query. Some of the questons have multiple answers as there are more than one way to provide an answer. Aswell, there are comments to provide more insoght into the solution process.
+- `Create_tables.sql`: **PostgreSQL** Script to creat each of the tables to be used during this project.
 
 ## Tools
 - **Excel**: Data Cleaning & Preparation.
@@ -27,7 +27,7 @@ In the initial data preparation phase we perform the following tasks:
 EDA involved exploring the multiple `csv` files to asnwer the multiple questions from the `Questions.txt` file.
 
 ## Data Analysis
-Include various levels of queries used to answer the questions.
+Include various levels of queries used to answer the questions:
 - **Basic Level**: Simple queries involving selections and filtering.
 - **Intermediate Level**: Queries with aggregations, joins, and conditional filtering.
 - **Advanced Level**: Complex queries requiring subqueries, CTE (Common Table Expressions), Window Functions, and data manipulation.
