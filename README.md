@@ -14,7 +14,7 @@ The Dataset used for this analysis is composed of multiple `.csv` files containi
 
 ## Tools
 - **Excel**: Data Cleaning & Preparation.
-- PGAdmin4: Data Analysis using **PostgreSQL** queries.
+- **PGAdmin4**: Data Analysis using **PostgreSQL** queries.
 
 ## Data Cleaning & Preparation
 In the initial data preparation phase we perform the following tasks:
