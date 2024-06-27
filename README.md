@@ -6,7 +6,6 @@ By responding multiple questions using PostgreSQL queries we seek to indentify k
 
 ## Data Sources
 The Dataset used for this analysis is composed of multiple `.csv` files containing information about famous paintings, museums, and more.
-This Dataset can be found in Kaggle: [click here](https://www.kaggle.com/datasets/mexwell/famous-paintings/data)
 
 ## Project Files
 - `Questions.txt`: Contains 22 questions to be answer realted to the Database.
@@ -35,6 +34,10 @@ Include various levels of queries used to answer the questions:
 
 ## Contributions
 We welcome contributions from the community to enhance this repository. Whether it’s improving the dataset, adding new features, or creating new use cases, your input is highly valued. Please feel free to submit pull requests or open issues for discussion.
+
+## References
+1. Kaggle [Famous Paintings Dataset](https://www.kaggle.com/datasets/mexwell/famous-paintings/data).
+2. [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
 ## License
 The dataset and all associated files in this repository are available under the Attribution 4.0 International (CC BY 4.0) license.
