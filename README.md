@@ -19,9 +19,8 @@ The Dataset used for this analysis is composed of multiple `.csv` files containi
 ## Data Cleaning & Preparation
 In the initial data preparation phase we perform the following tasks:
 1. Data Loading and Inspection.
-2. Handling Missing values.
-3. Data Cleaning and Formatting.
-4. Data Validation and Accuracy
+2. Data Cleaning and Formatting.
+3. Data Validation and Accuracy
 
 ## Exploratory Analysis
 EDA involved exploring the multiple `csv` files to asnwer the multiple questions from the `Questions.txt` file.
