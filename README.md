@@ -13,11 +13,11 @@ The Dataset used for this analysis is composed of multiple `csv` files containin
 - `Create_tables.sql`: PostgreSQL Script to creat each of the tables to be used during this project.
 
 ## Tools
-- **Excel**: Data cleaning & preparation.
+- **Excel**: Data Cleaning & Preparation.
 - PGAdmin4: Data Analysis using **PostgreSQL** queries.
 
-## Data Cleaning and Preparation
-In the initial data preparatino phase we perform the following tasks:
+## Data Cleaning & Preparation
+In the initial data preparation phase we perform the following tasks:
 1. Data Loading and Inspection.
 2. Handling Missing values.
 3. Data Cleaning and Formatting.
