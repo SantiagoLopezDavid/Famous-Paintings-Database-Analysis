@@ -5,7 +5,7 @@ This data analysis project aims to provide insights into the Famous Paintings Da
 By responding multiple questions using PostgreSQL queries we seek to indentify key data points and gain deeper understanding about this dataset.
 
 ## Data Sources
-The Dataset used for this analysis is composed of multiple `csv` files containing information about famous paintings, museums, and more.
+The Dataset used for this analysis is composed of multiple `.csv` files containing information about famous paintings, museums, and more.
 
 ## Project Files
 - `Questions.txt`: Contains 22 questions to be answer realted to the Database.
