@@ -10,6 +10,7 @@ The Dataset used for this analysis is composed of multiple `csv` files containin
 ## Project Files
 - `Questions.txt`: Contains 22 questions to be answer realted to the Database.
 - `Answers.sql`: PostgreSQL Script for each query. Some of the questons have multiple answers as there are more than one way to provide an answer. Aswell, there are comments to provide more insoght into the solution process.
+- `Create_tables.sql`: PostgreSQL Script to creat each of the tables to be used during this project.
 
 ## Tools
 - **Excel**: Data cleaning & preparation.
