@@ -2,7 +2,7 @@
 
 ## Project Overview
 This data analysis project aims to provide insights into the Famous Paintings Dataset from [Kaggle](https://www.kaggle.com/datasets/mexwell/famous-paintings/data).
-By responding multiple questions using PostgreSQL queries we seek to indentify key data points and gain deeper understanding about this dataset.
+By responding multiple questions using PostgreSQL queries we seek to identify key data points and gain deeper understanding about this dataset.
 
 ## Data Sources
 The Dataset used for this analysis is composed of multiple `.csv` files containing information about famous paintings, museums, and more.
